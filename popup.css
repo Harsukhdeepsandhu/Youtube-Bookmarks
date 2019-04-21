@@ -1,0 +1,15 @@
+body {
+    min-width: 500px;
+}
+
+.bookmark-button {
+    width: 25%;
+    margin-left: 37.5%;
+    border-radius: 50px;
+    background: #7afd00;
+    font-size: 1.5em;
+}
+
+.bookmark-button:hover {
+    cursor: pointer;
+}
