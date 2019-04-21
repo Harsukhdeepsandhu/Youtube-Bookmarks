@@ -13,3 +13,21 @@ body {
 .bookmark-button:hover {
     cursor: pointer;
 }
+
+.main-div {
+    width: 100%;
+}
+
+.title-div {
+    width: 80%;
+    float: left;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.delete-div {
+    width: 20%;
+    float: right;
+    cursor: pointer;
+    font-size: 1rem;
+}

@@ -19,6 +19,9 @@ chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.bookmark) {
             setStorage();
+            sendMessage();
+        } else if (request.link !== undefined) {
+            openLink(request.link.url);
         }
     }
 );
@@ -28,7 +31,7 @@ function setStorage() {
     let time = getCurrentTime(player);
 
     chrome.storage.sync.get(['youtubeBookmarks'], function (result) {
-        let bookmarks = JSON.parse(result.youtubeBookmarks);
+        let bookmarks = result.youtubeBookmarks;
         if (bookmarks === undefined) {
             bookmarks = {
                 value: [{
@@ -38,6 +41,7 @@ function setStorage() {
                 }]
             }
         } else {
+            bookmarks = JSON.parse(bookmarks);
             let value = {
                 time: time,
                 url: getUrl(),
@@ -48,8 +52,16 @@ function setStorage() {
 
         chrome.storage.sync.set({
             youtubeBookmarks: JSON.stringify(bookmarks)
-        }, function () {
-            console.log('Value is set to ' + bookmarks.value);
         });
+    });
+}
+
+function openLink(link) {
+    window.open(link, '_self');
+}
+
+function sendMessage() {
+    chrome.runtime.sendMessage({
+        refresh: true
     });
 }
