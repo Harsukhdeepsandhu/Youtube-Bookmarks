@@ -3,28 +3,30 @@
     "version": "1.0",
     "description": "Bookmark youtube videos at current time stamp",
     "permissions": [
-        "https://youtube.com/watch?v=*",
-        "http://youtube.com/watch?v=*",
-        "https://www.youtube.com/watch?v=*",
-        "http://www.youtube.com/watch?v=*",
+        "https://youtube.com/*",
+        "http://youtube.com/*",
+        "https://www.youtube.com/*",
+        "http://www.youtube.com/*",
         "activeTab",
         "storage"
     ],
     "content_scripts": [{
         "matches": [
-            "https://youtube.com/watch?v=*",
-            "http://youtube.com/watch?v=*",
-            "https://www.youtube.com/watch?v=*",
-            "http://www.youtube.com/watch?v=*"
+            "https://youtube.com/*",
+            "http://youtube.com/*",
+            "https://www.youtube.com/*",
+            "http://www.youtube.com/*"
         ],
         "js": ["app.js"]
     }],
-    "background": {
-        "scripts": ["background.js"],
-        "persistent": false
-    },
     "browser_action": {
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/icon.png",
+            "32": "images/icon.png",
+            "48": "images/icon.png",
+            "128": "images/icon.png"
+        }
     },
     "manifest_version": 2
 }
